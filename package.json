@@ -1,0 +1,22 @@
+{
+  "name": "voto-local-bienal",
+  "version": "1.0.0",
+  "description": "Sistema para voto físico de la bienal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpeedBienal/voto-local-bienal.git"
+  },
+  "author": "Malows",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SpeedBienal/voto-local-bienal/issues"
+  },
+  "homepage": "https://github.com/SpeedBienal/voto-local-bienal#readme",
+  "dependencies": {
+    "mongoose": "^4.5.3"
+  }
+}
