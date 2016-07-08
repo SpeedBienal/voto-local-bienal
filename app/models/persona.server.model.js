@@ -15,9 +15,10 @@ var PersonaSchema = new Schema({
     required: true,
   },
   email: {
-    type: String,
-    required: true,
-  },
+   type: String,
+   index: true,
+   match: [ /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm, 'Fill me with a valid E-Mail adress plizchu!' ]
+ },
   voto_musica: {
     type: ObjectId,
     ref: obras,
