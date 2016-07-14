@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body ng-app="bienal" layout="column" ng-controller="PersonasController as PC" ng-cloak>
+    <!-- Container #1 (see wireframe) -->
+    <md-toolbar layout="row" >
+      <h3>Bienal de Arte Joven</h3>
+    </md-toolbar>
+
+    <div flex layout="row">
+      <div ui-view></div>
+    </div>
+
+
+    <script src="./lib/angular/angular.js"></script>
+    <script src="./lib/angular-animate/angular-animate.js"></script>
+    <script src="./lib/angular-aria/angular-aria.js"></script>
+    <script src="./lib/angular-messages/angular-messages.js"></script>
+    <script src="./lib/angular-material/angular-material.js"></script>
+    <script src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./bienal.client.bootstrap.js"></script>
+    <script src="./controllers/personas.client.controller.js"></script>
+    <script src="./controllers/listas.client.controller.js"></script>
+    <script src="./services/personas.client.service.js"></script>
+    <script src="./services/local.client.service.js"></script>
+  </body>
+</html>

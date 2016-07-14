@@ -9,13 +9,6 @@ var morgan = require('morgan');
 var compress = require('compression');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-// Sessions
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-
-// Login
-var flash = require('connect-flash');
-var passport = require('passport');
 
 module.exports = function( db ) {
   var app = express();
@@ -33,27 +26,21 @@ module.exports = function( db ) {
   app.use( bodyParser.json() );
   app.use( methodOverride() );
 
-  var mongoStore = new MongoStore( {mongooseConnection: db.connection } ); // me da error de conexion
-
-  app.use( session( {
-    saveUninitialized: true,
-    resave: true,
-    secret: config.sessionSecret,
-    store: mongoStore,
-  }));
-
-  app.use( flash() );
-  app.use( passport.initialize() );
-  app.use( passport.session() );
-
   // Sets de Express
   app.set( 'views', './app/views' );
   app.set( 'view engine', 'jade' );
 
+  //Handling de errores 400 y 500
+  /*app.use(function(req, res) {
+    res.send('404: Page not Found', 404);
+  });
+  app.use(function(error, req, res, next) {
+    res.send('500: Internal Server Error', 500);
+  });*/
+
   //Require a las rutas
-  require( '../app/routes/index.server.routes.js' )( app );
-  require( '../app/routes/user.server.routes.js' )( app );
-  require( '../app/routes/articles.server.routes.js' )( app );
+  require( '../app/routes/persona.server.route.js' )( app );
+  require( '../app/routes/obras.server.route.js' )( app );
 
   //Express api
   app.use( express.static( './public' ) );

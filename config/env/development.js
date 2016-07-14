@@ -1,4 +1,4 @@
 module.exports = {
-  db : 'mongodb://localhost/votacion-local',
+  db : 'mongodb://localhost/votacionLocal',
   sessionSecret : 'developmentSessionSecret',
 };

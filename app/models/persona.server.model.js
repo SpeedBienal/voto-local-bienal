@@ -11,42 +11,54 @@ var PersonaSchema = new Schema({
     required: true,
   },
   dni: {
-    type: String,
+    type: Number,
+    index: true,
+    unique: true,
     required: true,
+    set: function (entrada) {
+      entrada = entrada.toString();
+      entrada = entrada.replace(/[,.\s]+/g, "").trim();
+      return parseInt(entrada);
+    },
   },
   email: {
    type: String,
-   index: true,
+   unique: true,
    match: [ /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm, 'Fill me with a valid E-Mail adress plizchu!' ]
  },
   voto_musica: {
-    type: ObjectId,
-    ref: obras,
+    type: Schema.ObjectId,
+    ref: 'Obra',
     required: true,
   },
   voto_audiovisuales: {
-    type: ObjectId,
-    ref: obras,
+    type: Schema.ObjectId,
+    ref: 'Obra',
     required: true,
-    default: null,
   },
   voto_visuales: {
-    type: ObjectId,
-    ref: obras,
+    type: Schema.ObjectId,
+    ref: 'Obra',
     required: true,
-    default: null,
   },
   voto_escenicas: {
-    type: ObjectId,
-    ref: obras,
+    type: Schema.ObjectId,
+    ref: 'Obra',
     required: true,
-    default: null,
   },
   voto_letras: {
-    type: ObjectId,
-    ref: obras,
+    type: Schema.ObjectId,
+    ref: 'Obra',
     required: true,
-    default: null,
   },
+  created: {
+    type: Date,
+    default: Date.now,
+  }
 });
-mongoose.Model('Persona' PersonaSchema);
+
+PersonaSchema.statics.personaByEmail = function (email, callback) {
+  this.find( { email: new RegEx( email, 'i') }, callback );
+};
+
+mongoose.model('Persona', PersonaSchema);

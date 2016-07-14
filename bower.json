@@ -1,0 +1,25 @@
+{
+  "name": "voto-local-bienal",
+  "description": "Sistema para voto físico de la bienal",
+  "main": "server.js",
+  "authors": [
+    "Malows"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/SpeedBienal/voto-local-bienal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.0.9",
+    "angular-ui-router": "^0.3.1"
+  }
+}

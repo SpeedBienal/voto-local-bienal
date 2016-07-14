@@ -13,6 +13,7 @@ var getErrorMessage = function ( err ) {
 
 exports.list = function (req, res) {
   Obra.find()
+  .sort('-created')
   .exec(function (err, obras) {
     if (err) {
       return res.status(400).send( { message: getErrorMessage( err ) } );
@@ -64,54 +65,49 @@ exports.delete = function (req, res) {
 };
 
 exports.obraByID = function (req, res, next, id) {
-  Obra.findById( id )
-  .exec( function (err, obra) {
-    if (err) {
-      return next(err);
+  Obra.findOne( {_id: id}, function (err, obra) {
+    if ( err ) {
+      return next( err );
+    } else {
+      req.obra = obra;
+      next();
     }
-    if (!obra) {
-      return next( new Error("Falló al cargar la obra " + id));
-    }
-    req.obra = obra;
-    next();
   });
 };
 
+
 exports.obraByAutor = function (req, res, next, autor) {
- Obra.findByAutor( autor ).exec(function (err, obras) {
+ Obra.findByAutor( autor, function (err, obras) {
    if (err) {
      return next(err);
-   }
-   if ( obras.length === 0 || !obras ) {
+   } else if ( obras.length === 0 || !obras ) {
      return next( new Error("No se encontraron obras de " + autor));
-   }
-   req.obra = obras;
-   next();
- });
+   } else {
+     req.obra = obras;
+     next();
+ }});
 };
 
 exports.obraByCategoria = function (req, res, next, categoria) {
-  Obra.findByCategoria( categoria ).exec(function (err, obras) {
+  Obra.findByCategoria( categoria, function (err, obras) {
     if (err) {
       return next(err);
-    }
-    if ( obras.length === 0 || !obras ) {
+    } else if ( obras.length === 0 || !obras ) {
       return next( new Error("No se encontraron obras de la categoría" + categoria));
-    }
-    req.obra = obras;
-    next();
-  });
+    } else {
+      req.obra = obras;
+      next();
+    }});
 };
 
 exports.obraByFiltro = function (req, res, next, filtro) {
-  Obra.findByFiltro( filtro ).exec(function (err, obras) {
+  Obra.findByFiltro( filtro, function (err, obras) {
     if (err) {
       return next(err);
-    }
-    if ( obras.length === 0 || !obras ) {
+    } else if ( obras.length === 0 || !obras ) {
       return next( new Error("No se econtraron coincidencias con '"+ filtro +"'"));
-    }
-    req.obra = obras;
-    next();
-  });
+    } else {
+      req.obra = obras;
+      next();
+  }});
 }
