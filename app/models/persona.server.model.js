@@ -24,6 +24,7 @@ var PersonaSchema = new Schema({
   email: {
    type: String,
    unique: true,
+   required: true,
    match: [ /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm, 'Fill me with a valid E-Mail adress plizchu!' ]
  },
   voto_musica: {

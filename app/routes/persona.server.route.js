@@ -10,11 +10,14 @@ module.exports = function( app ) {
     .put( persona.update )
     .delete( persona.delete );
 
-  app.route( 'api/personas/dni/:personaDNI' )
+  app.route( '/api/personas/dni/:personaDNI' )
     .get( persona.read )
     .put( persona.update )
     .delete( persona.delete );
 
-  app.param( 'personaId', persona.personaId );
-  app.param( 'personaDNI', persona.personaDNI );
+  app.route( '/api/personas/buscar')
+    .post( persona.puedeVotar );
+
+  app.param( 'personaId', persona.personaById );
+  app.param( 'personaDNI', persona.personaByDNI );
 };

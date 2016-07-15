@@ -9,20 +9,18 @@
 
   function personas_() {
     return {
-      cotejar_datos_de_persona: function ( categoria ) {
+      cotejar_datos_de_persona: function ( nombre, apellido, email, dni ) {
+        var obj = {nombre: nombre, apellido: apellido, email: email, dni: dni};
         return $http
-          .get('http://localhost:3000/api/obras/categorias/'+categoria)
+          .post('http://localhost:3000/api/personas/buscar/', obj)
           .then(function (response) {
             //success
-            return response.data;
-          }, function (response) {
-            //error
-            return response.status != 200 ? false : response.data;
+            return response.data.puede_votar;
           });
       },
 
       enviar_voto: function ( obj ) {
-        return $http.post('http://localhost:3000/api/votacion', obj )
+        return $http.post('http://localhost:3000/api/persona/', obj )
           .then(function (resp) {
             return resp;
           }, function (resp) {

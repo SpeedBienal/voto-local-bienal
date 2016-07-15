@@ -7,7 +7,7 @@
 
       <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
         <div flex-gt-sm="80">
-          <p>Bienvenido, lo guíaremos a travez del proceso de votación de la 12ª Bienal de Arte Joven</p>
+          <p>Bienvenido, lo guíaremos a través del proceso de votación de la 12ª Bienal de Arte Joven</p>
         </div>
       </div>
 
@@ -16,7 +16,7 @@
         <!-- Nombre -->
         <md-input-container class="md-block" flex-gt-sm>
           <label>Nombre</label>
-          <input required name="nombre" ng-model="PC.nombre" />
+          <input required name="nombre" ng-model="PC.nombre" required />
           <div ng-messages="userForm.nombre.$error">
             <div ng-message="required">El nombre es un campo obligatorio.</div>
           </div>
@@ -27,7 +27,7 @@
         <!-- Apellido -->
         <md-input-container class="md-block" flex-gt-sm>
           <label>Apellido</label>
-          <input name="apellido" ng-model="PC.apellido" />
+          <input name="apellido" ng-model="PC.apellido" required />
           <div ng-messages="userForm.apellido.$error">
             <div ng-message="required">El apellido es un campo obligatorio</div>
           </div>
@@ -41,11 +41,10 @@
         <md-input-container class="md-block" flex-gt-sm>
           <label>Email</label>
           <input name="email" ng-model="PC.email"
-                 required maxlength="100" ng-pattern="/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm" />
-          <div ng-messages="userForm.email.$error" ng-hide="showHints">
-            <div ng-message-exp="['required', 'maxlength', 'pattern']">
-              Your email must be between 10 and 100 characters long and look like an e-mail address.
-            </div>
+                 required ng-pattern="/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm" />
+          <div ng-messages="userForm.email.$error">
+            <div ng-message="pattern">Ingrese un e-mail válido</div>
+            <div ng-message="required">El e-mail es un campo obligatorio</div>
           </div>
         </md-input-container>
         <div flex="5" hide-xs hide-sm>
