@@ -2,10 +2,7 @@
 
   angular
     .module('bienal')
-    .controller('PersonasController', ['$scope', '$state', 'personasService', PersonasCtrl])
-    .run(function ($log) {
-      $log.debug('cargo personas controller')
-    });
+    .controller('PersonasController', ['$scope', '$state', 'personasService', PersonasCtrl]);
 
   function PersonasCtrl($scope, $state, personasService) {
     $scope.nombre = "";
@@ -17,20 +14,22 @@
     $scope.persona_disponible_de_voto = true;
 
     $scope.cotejar_datos_de_persona = function (nombre, apellido, email, dni) {
-      return personasService.cotejar_datos_de_persona(nombre, apellido, mail, dni);
+      return personasService.cotejar_datos_de_persona(nombre, apellido, email, dni);
     };
 
     $scope.comprobar_disponibilidad = function () {
-      $scope.persona_disponible_de_voto = $scope.cotejar_datos_de_persona(
-        $scope.nombre, $scope.apellido, $scope.email, $scope.dni
-      );
-      /*
-      if (true) {
-      lo llevo al siguiente estado
-      } else {
-        raiseo el error de que ya voto, que no se olvide D:
-      }
-      */
+      $scope.cotejar_datos_de_persona( $scope.nombre, $scope.apellido, $scope.email, $scope.dni )
+        .then(function (res) {
+          $scope.persona_disponible_de_voto = res.data.puede_votar;
+          if ( $scope.persona_disponible_de_voto ) {
+            $state.go('votoAudioVisuales');
+          } else {
+            //raiseo el error de que ya voto, que no se olvide D:
+            $state.go('repetido');
+          }
+        },function (res) {
+          console.log("No se resolvio la promesa de controlar la persona");
+        });
     };
 
     $scope.enviar_voto = function () {

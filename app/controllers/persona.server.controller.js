@@ -17,7 +17,7 @@ exports.create = function (req, res, next) {
   req.body.voto_escenicas = req.body.voto.escenicas._id;
   req.body.voto_audiovisuales = req.body.voto.audiovisuales._id;
   req.body.voto_visuales = req.body.voto.visuales._id;
-  
+
   var persona = new Persona( req.body );
   persona.save(function (err) {
     if (err) {
@@ -83,8 +83,6 @@ exports.puedeVotar = function (req, res, next) {
         if (err) {
           return next(err);
         } else {
-          console.log(persona_dni);
-          console.log(persona_mail);
           if (persona_dni.length === 0 && persona_mail.length === 0) {
             res.json({ puede_votar: true });
           } else {

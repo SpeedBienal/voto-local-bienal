@@ -7,11 +7,7 @@
     //primer estado, es el ingreso de la persona
     .run(['$state', function ( $state ) {
       $state.go('ingresoDePersona');
-    }])
-    //solo para verlo en la consola
-    .run(function( $log ){
-        $log.debug("Corriendo angular");
-      });
+    }]);
 
 
 //funciones de llamado en la configuracion
@@ -49,7 +45,12 @@
         })
         .state('agradecimiento',{
           url: '/gracias',
-          templateUrl: 'agradecimiento.client.view.html',
+          templateUrl: '/views/agradecimiento.client.view.html',
+          controller: ''
+        })
+        .state('repetido', {
+          url: '/error',
+          templateUrl: '/views/repetido.client.view.html',
           controller: ''
         });
     }

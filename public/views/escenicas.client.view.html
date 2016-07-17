@@ -1,36 +1,23 @@
 <div ng-controller="EscenicasController as EC" ng-cloak layout-gt-sm="row" layout="column">
-
   <div flex-gt-sm="50" flex>
-
-    <md-toolbar layout="row" class="md-hue-3">
-
-      <div class="md-toolbar-tools">
-        <span>Escénicas</span>
-      </div>
-
+    <md-toolbar layout="row" layout-align="space-around center" class="md-hue-3">
+      <span>Escénicas</span>
     </md-toolbar>
-    <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
-      <div flex-gt-sm="80">
-        <md-content>
-
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Filtro</label>
-            <input name="filtro" ng-model="EC.filtro" />
-          </md-input-container>
-
-          <md-list flex>
-
-            <md-subheader class="md-no-sticky">Obras y autores:</md-subheader>
-            <md-list-item class="md-2-line" ng-repeat="item in obras | filter:filtro" ng-click="PC.showConfirm($event,item)">
-                <h3>{{ item.titulo }}</h3>
-                <h4>{{ item.autor }}</h4>
-              </div>
-            </md-list-item>
-
-            <md-divider ></md-divider>
-
-          </md-list>
-        </md-content>
-      </div>
+    <div layout="row" layout-align="space-around start">
+      <md-content flex-gt-sm="50" flex="80">
+        <md-input-container class="md-block" flex>
+          <label>Filtro</label>
+          <input name="filtro" ng-model="filtro" flex/>
+        </md-input-container>
+        <md-list flex>
+          <md-subheader class="md-no-sticky">Obras y autores:</md-subheader>
+          <md-list-item class="md-2-line" ng-repeat="item in obras | filter:filtro" ng-click="PC.showConfirm($event,item)">
+            <div class="md-list-item-text" layout="column">
+              <h3><strong>{{ item.titulo }}</strong></h3>
+              <h4>{{ item.autor }}</h4>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
     </div>
   </div>

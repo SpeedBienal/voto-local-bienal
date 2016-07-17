@@ -11,63 +11,62 @@
         </div>
       </div>
 
-      <!-- Nombre y Apellido -->
-      <div layout-gt-sm="row">
-        <!-- Nombre -->
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Nombre</label>
-          <input required name="nombre" ng-model="PC.nombre" required />
-          <div ng-messages="userForm.nombre.$error">
-            <div ng-message="required">El nombre es un campo obligatorio.</div>
-          </div>
-        </md-input-container>
-        <div flex="5" hide-xs hide-sm>
-          <!-- Spacer //-->
+      <!-- Nombre -->
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nombre</label>
+        <input required name="nombre" ng-model="nombre" required />
+        <div ng-messages="userForm.nombre.$error">
+          <div ng-message="required">El nombre es un campo obligatorio.</div>
         </div>
-        <!-- Apellido -->
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Apellido</label>
-          <input name="apellido" ng-model="PC.apellido" required />
-          <div ng-messages="userForm.apellido.$error">
-            <div ng-message="required">El apellido es un campo obligatorio</div>
-          </div>
-        </md-input-container>
+      </md-input-container>
+
+      <div flex="5" hide-xs hide-sm>
+        <!-- Spacer //-->
       </div>
 
-
-      <!-- Email y DNI -->
-      <div layout-gt-sm="row">
-        <!-- Email -->
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Email</label>
-          <input name="email" ng-model="PC.email"
-                 required ng-pattern="/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm" />
-          <div ng-messages="userForm.email.$error">
-            <div ng-message="pattern">Ingrese un e-mail válido</div>
-            <div ng-message="required">El e-mail es un campo obligatorio</div>
-          </div>
-        </md-input-container>
-        <div flex="5" hide-xs hide-sm>
-          <!-- Spacer //-->
+      <!-- Apellido -->
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Apellido</label>
+        <input name="apellido" ng-model="apellido" required />
+        <div ng-messages="userForm.apellido.$error">
+          <div ng-message="required">El apellido es un campo obligatorio</div>
         </div>
-        <!-- DNI -->
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>DNI</label>
-          <input name="phone" ng-model="user.phone" ng-pattern="/^(?=[0-9]*$)(?:.{7}|.{8})$/" />
-          <div ng-messages="userForm.phone.$error">
-            <div ng-message="pattern">Números solamente, sin caracteres especiales</div>
-          </div>
-        </md-input-container>
+      </md-input-container>
+
+      <div flex="5" hide-xs hide-sm>
+        <!-- Spacer //-->
       </div>
+
+      <!-- Email -->
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Email</label>
+        <input name="email" ng-model="email"
+               required ng-pattern="/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm" />
+        <div ng-messages="userForm.email.$error">
+          <div ng-message="pattern">Ingrese un e-mail válido</div>
+          <div ng-message="required">El e-mail es un campo obligatorio</div>
+        </div>
+      </md-input-container>
+
+      <div flex="5" hide-xs hide-sm>
+        <!-- Spacer //-->
+      </div>
+
+      <!-- DNI -->
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>DNI</label>
+        <input name="dni" ng-model="dni" required ng-pattern="/^(?=[0-9]*$)(?:.{7}|.{8})$/" />
+        <div ng-messages="userForm.phone.$error">
+          <div ng-message="pattern">Números solamente, sin caracteres especiales</div>
+          <div ng-message="required">El DNI es un campo obligatorio</div>
+        </div>
+      </md-input-container>
 
 
     </form>
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-      <md-button class="md-fab" aria-label="Eat cake">
-        <md-icon ng-style="{color: white}" aria-label="algo" class="material-icons step" ng-class="md-24">
-          person
-        </md-icon>
-        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+      <md-button class="md-fab" aria-label="person" ng-click="comprobar_disponibilidad()">
+        <md-icon md-svg-src="img/svg/ic_person_white_36px.svg"></md-icon>
       </md-button>
     </section>
 

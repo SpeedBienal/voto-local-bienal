@@ -92,9 +92,9 @@ exports.obraByCategoria = function (req, res, next, categoria) {
   Obra.findByCategoria( categoria, function (err, obras) {
     if (err) {
       return next(err);
-    } else if ( obras.length === 0 || !obras ) {
-      return next( new Error("No se encontraron obras de la categoría" + categoria));
-    } else {
+  /*  } else if ( obras.length === 0 || !obras ) {
+      return next( new Error("No se encontraron obras de la categoría " + categoria));
+  */  } else {
       req.obra = obras;
       next();
     }});

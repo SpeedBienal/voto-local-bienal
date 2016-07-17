@@ -33,7 +33,7 @@ ObraSchema.statics.findByFiltro = function (filtro, callback) {
 };
 
 ObraSchema.statics.findByCategoria = function (categoria, callback) {
-  this.find( { categoria: new RegEx( categoria, 'i' ) }, callback);
+  this.find( { "categoria": new RegExp( '^'+categoria+'$', 'i' ) }, callback);
 };
 
 ObraSchema.set( 'toJSON', { getters: true } );
