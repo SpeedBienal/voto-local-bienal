@@ -2,9 +2,9 @@
 
   angular
     .module('bienal')
-    .controller('PersonasController', ['$scope', '$state', 'personasService', PersonasCtrl]);
+    .controller('PersonasController', ['$scope', '$state', '$mdDialog', 'personasService', PersonasCtrl]);
 
-  function PersonasCtrl($scope, $state, personasService) {
+  function PersonasCtrl($scope, $state, $mdDialog, personasService) {
     $scope.nombre = "";
     $scope.apellido = "";
     $scope.dni = "";
@@ -83,7 +83,7 @@
       var confirm = $mdDialog.confirm()
       .title('Confirmar voto')
       .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+'?')
-      .ariaLabel('Lucky day')
+      .ariaLabel('confirm')
       .targetEvent(ev)
       .ok('Sí')
       .cancel('No');
