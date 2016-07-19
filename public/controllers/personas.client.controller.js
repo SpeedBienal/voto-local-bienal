@@ -97,5 +97,9 @@
         //do nothing
       });
     };
+
+    $scope.goHome = function () {
+      $state.go('ingresoDePersona');
+    };
   }
 })();

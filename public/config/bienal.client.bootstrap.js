@@ -20,38 +20,43 @@
         })
         .state('votoAudioVisuales',{
           url:'/audiovisuales',
-          templateUrl: '/views/audiovisuales.client.view.html',
+          templateUrl: '/views/listas/audiovisuales.client.view.html',
           controller: 'AudioVisualesController'
         })
         .state('votoVisuales',{
           url:'/visuales',
-          templateUrl: '/views/visuales.client.view.html',
+          templateUrl: '/views/listas/visuales.client.view.html',
           controller: 'VisualesController'
         })
         .state('votoMusica',{
           url: '/musica',
-          templateUrl: '/views/musica.client.view.html',
+          templateUrl: '/views/listas/musica.client.view.html',
           controller: 'MusicaController'
         })
         .state('votoLetras',{
           url: '/letras',
-          templateUrl: '/views/letras.client.view.html',
+          templateUrl: '/views/listas/letras.client.view.html',
           controller: 'LetrasController'
         })
         .state('votoEscenicas',{
           url: '/escenicas',
-          templateUrl: '/views/escenicas.client.view.html',
+          templateUrl: '/views/listas/escenicas.client.view.html',
           controller: 'EscenicasController'
         })
         .state('agradecimiento',{
           url: '/gracias',
           templateUrl: '/views/mensajes/agradecimiento.client.view.html',
-          controller: ''
+          controller: 'PersonasController'
         })
         .state('repetido', {
           url: '/error',
           templateUrl: '/views/mensajes/repetido.client.view.html',
-          controller: ''
+          controller: 'PersonasController'
+        });
+
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
         });
     }
 
