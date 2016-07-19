@@ -11,7 +11,10 @@ module.exports = function( app ) {
     .delete( obra.delete );
 
   app.route( '/api/obras/categorias/:categoria')
-    .get( obra.read )
+    .get( obra.read );
+
+  app.route( '/api/obras/backup/json' )
+    .get( obra.pretty_list );
 
   app.param( 'obraId', obra.obraByID );
   app.param( 'categoria', obra.obraByCategoria );

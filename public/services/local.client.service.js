@@ -8,6 +8,9 @@
     return {
       getAll: function ( categoria ) {
         return $http.get('http://localhost:3000/api/obras/categorias/'+categoria);
+      },
+      getEntireList: function () {
+        return $http.get('http://localhost:3000/api/obras');
       }
     }
   }

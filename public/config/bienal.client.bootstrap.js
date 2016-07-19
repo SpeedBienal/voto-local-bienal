@@ -20,27 +20,27 @@
         })
         .state('votoAudioVisuales',{
           url:'/audiovisuales',
-          templateUrl: '/views/listas/audiovisuales.client.view.html',
+          templateUrl: '/views/audiovisuales.client.view.html',
           controller: 'AudioVisualesController'
         })
         .state('votoVisuales',{
           url:'/visuales',
-          templateUrl: '/views/listas/visuales.client.view.html',
+          templateUrl: '/views/visuales.client.view.html',
           controller: 'VisualesController'
         })
         .state('votoMusica',{
           url: '/musica',
-          templateUrl: '/views/listas/musica.client.view.html',
+          templateUrl: '/views/musica.client.view.html',
           controller: 'MusicaController'
         })
         .state('votoLetras',{
           url: '/letras',
-          templateUrl: '/views/listas/letras.client.view.html',
+          templateUrl: '/views/letras.client.view.html',
           controller: 'LetrasController'
         })
         .state('votoEscenicas',{
           url: '/escenicas',
-          templateUrl: '/views/listas/escenicas.client.view.html',
+          templateUrl: '/views/escenicas.client.view.html',
           controller: 'EscenicasController'
         })
         .state('agradecimiento',{

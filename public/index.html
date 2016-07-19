@@ -16,17 +16,22 @@
       <div ui-view flex></div>
     </div>
 
-
+<!-- Dependencias -->
     <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-animate/angular-animate.js"></script>
     <script src="./lib/angular-aria/angular-aria.js"></script>
     <script src="./lib/angular-messages/angular-messages.js"></script>
     <script src="./lib/angular-material/angular-material.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="./bienal.client.bootstrap.js"></script>
+<!-- App voto local Bienal -->
+    <script src="./config/bienal.client.bootstrap.js"></script>
     <script src="./controllers/personas.client.controller.js"></script>
     <script src="./controllers/listas.client.controller.js"></script>
     <script src="./services/personas.client.service.js"></script>
     <script src="./services/local.client.service.js"></script>
+<!-- Archivos para la carga de obras -->
+    <script src="./config/crud.client.config.js"></script>
+    <script src="./controllers/obras.client.controller.js"></script>
+    <script src="./services/obras.client.service.js"></script>
   </body>
 </html>

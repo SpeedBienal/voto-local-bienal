@@ -110,4 +110,14 @@ exports.obraByFiltro = function (req, res, next, filtro) {
       req.obra = obras;
       next();
   }});
-}
+};
+
+exports.pretty_list = function (req, res) {
+  Obra.find({}, '-_id titulo autor categoria', function(err, obras) {
+    if (err) {
+      return res.status(400).send( { message: getErrorMessage( err ) } );
+    } else {
+      res.json(obras);
+    }
+  });
+};
