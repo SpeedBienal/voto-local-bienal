@@ -1,0 +1,33 @@
+<div layout-gt-sm="row" layout="column">
+  <div flex-gt-sm="50" flex>
+    <md-toolbar layout="row" layout-align="space-around center" class="md-hue-3">
+      <span>Confirmación</span>
+    </md-toolbar>
+    <div layout="row" layout-align="space-around start">
+      <md-content flex-gt-sm="50" flex="80">
+        <p>
+          Estas por votar a estas obras, este proceso no puede revertirse una vez confirmado, revisalo por favor
+        </p>
+        <md-list flex>
+          <md-subheader class="md-no-sticky">Obras y autores:</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="item in votos" >
+            <div class="md-list-item-text" layout="column">
+              <h3><strong>{{ item.titulo }}</strong></h3>
+              <h4>{{ item.autor }}</h4>
+              <h4>{{ item.categoria }}</h4>
+            </div>
+          </md-list-item>
+        </md-list>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <a ui-sref="ingresoDePersona">
+            <md-button class="md-fab" aria-label="person">
+              <md-icon md-svg-src="img/svg/ic_clear_white_36px.svg"></md-icon>
+            </md-button>
+          </a>
+          <md-button class="md-fab" aria-label="gracias" ng-click="enviar_voto()">
+            <md-icon md-svg-src="img/svg/ic_check_white_36px.svg"></md-icon>
+          </md-button>
+        </section>
+      </md-content>
+    </div>
+  </div>

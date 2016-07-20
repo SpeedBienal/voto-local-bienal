@@ -2,9 +2,10 @@
 
   angular
     .module('bienal')
-    .controller('PersonasController', ['$scope', '$state', '$mdDialog', 'personasService', PersonasCtrl]);
+    .controller('PersonasController', ['$scope', '$state', '$stateParams', 'personasService', PersonasCtrl])
+    .controller('ConfirmarController', ['$scope', '$state', '$stateParams', 'personasService', ConfirmarCtrl]);
 
-  function PersonasCtrl($scope, $state, $mdDialog, personasService) {
+  function PersonasCtrl($scope, $state, $stateParams, personasService) {
     $scope.nombre = "";
     $scope.apellido = "";
     $scope.dni = "";
@@ -22,7 +23,14 @@
         .then(function (res) {
           $scope.persona_disponible_de_voto = res.data.puede_votar;
           if ( $scope.persona_disponible_de_voto ) {
-            $state.go('votoAudioVisuales');
+            $state
+            .go('votoAudioVisuales',{
+              nombre:$scope.nombre,
+              apellido:$scope.apellido,
+              email:$scope.email,
+              dni:$scope.dni,
+              votos:$scope.votos
+            });
           } else {
             //raiseo el error de que ya voto, que no se olvide D:
             $state.go('repetido');
@@ -32,6 +40,15 @@
         });
     };
 
+  }
+
+  function ConfirmarCtrl($scope, $state, $stateParams, personasService) {
+    $scope.nombre = $stateParams.nombre;
+    $scope.apellido = $stateParams.apellido;
+    $scope.email = $stateParams.email;
+    $scope.dni = $stateParams.dni;
+    $scope.votos = $stateParams.votos;
+
     $scope.enviar_voto = function () {
       var obj = {};
       obj.nombre = $scope.nombre;
@@ -39,67 +56,11 @@
       obj.dni = $scope.dni;
       obj.email = $scope.email;
       obj.votos = $scope.votos;
-      var promise = personasService.enviar_voto( obj );
-      if (promise.status != 200) {
-        $log.debug(promise);
-        return false;
-      } else {
-        return true;
-      }
-    };
-
-    $scope.seleccionar_voto = function (obra) {
-      switch (obra.categoria) {
-        case 'escenicas':
-        $scope.votos.escenicas = obra;
-        $state.go('votoLetras');
-        break;
-
-        case 'musica':
-        $scope.votos.musica = obra;
-        $state.go('votoEscenicas');
-        break;
-
-        case 'visuales':
-        $scope.votos.visuales = obra;
-        $state.go('votoMusica');
-        break;
-
-        case 'audiovisuales':
-        $scope.votos.audiovisuales = obra;
-        $state.go('votoVisuales');
-        break;
-
-        case 'letras':
-        $scope.votos.letras = obra;
+      personasService.enviar_voto( obj ).then(function (res) {
         $state.go('agradecimiento');
-        break;
-        default:
-      }
-    };
-
-    $scope.showConfirm = function(ev, obra) {
-      // Appending dialog to document.body to cover sidenav in docs app
-      var confirm = $mdDialog.confirm()
-      .title('Confirmar voto')
-      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+'?')
-      .ariaLabel('confirm')
-      .targetEvent(ev)
-      .ok('Sí')
-      .cancel('No');
-
-      $mdDialog.show( confirm ).then(function() {
-
-        $scope.seleccionar_voto(obra);
-
-      }, function() {
-        //cancel handler
-        //do nothing
+      },function (res) {
+        console.log('Errores al enviar voto al servidor');
       });
-    };
-
-    $scope.goHome = function () {
-      $state.go('ingresoDePersona');
     };
   }
 })();

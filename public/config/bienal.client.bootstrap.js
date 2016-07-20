@@ -19,39 +19,37 @@
           controller: 'PersonasController'
         })
         .state('votoAudioVisuales',{
-          url:'/audiovisuales',
+          url:'/audiovisuales/:nombre/:apellido/:email/:dni/:votos',
           templateUrl: '/views/listas/audiovisuales.client.view.html',
           controller: 'AudioVisualesController'
         })
         .state('votoVisuales',{
-          url:'/visuales',
+          url:'/visuales/:nombre/:apellido/:email/:dni/:votos',
           templateUrl: '/views/listas/visuales.client.view.html',
           controller: 'VisualesController'
         })
         .state('votoMusica',{
-          url: '/musica',
+          url: '/musica/:nombre/:apellido/:email/:dni/:votos',
           templateUrl: '/views/listas/musica.client.view.html',
           controller: 'MusicaController'
         })
         .state('votoLetras',{
-          url: '/letras',
+          url: '/letras/:nombre/:apellido/:email/:dni/:votos',
           templateUrl: '/views/listas/letras.client.view.html',
           controller: 'LetrasController'
         })
         .state('votoEscenicas',{
-          url: '/escenicas',
+          url: '/escenicas/:nombre/:apellido/:email/:dni/:votos',
           templateUrl: '/views/listas/escenicas.client.view.html',
           controller: 'EscenicasController'
         })
         .state('agradecimiento',{
           url: '/gracias',
-          templateUrl: '/views/mensajes/agradecimiento.client.view.html',
-          controller: 'PersonasController'
+          templateUrl: '/views/mensajes/agradecimiento.client.view.html'
         })
         .state('repetido', {
           url: '/error',
-          templateUrl: '/views/mensajes/repetido.client.view.html',
-          controller: 'PersonasController'
+          templateUrl: '/views/mensajes/repetido.client.view.html'
         });
 
         $locationProvider.html5Mode({

@@ -41,7 +41,7 @@
       <md-input-container class="md-block" flex-gt-sm>
         <label>Email</label>
         <input name="email" ng-model="email"
-               required ng-pattern="/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/igm" />
+               required ng-pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/ig" />
         <div ng-messages="userForm.email.$error">
           <div ng-message="pattern">Ingrese un e-mail válido</div>
           <div ng-message="required">El e-mail es un campo obligatorio</div>
