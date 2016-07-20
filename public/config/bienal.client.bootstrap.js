@@ -50,6 +50,10 @@
         .state('repetido', {
           url: '/error',
           templateUrl: '/views/mensajes/repetido.client.view.html'
+        })
+        .state('confirmar', {
+          url: '/confirmar/:nombre/:apellido/:email/:dni/:votos',
+          templateUrl: '/views/mensajes/confirmacion.client.view.html'
         });
 
         $locationProvider.html5Mode({

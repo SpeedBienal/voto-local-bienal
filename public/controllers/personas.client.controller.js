@@ -10,8 +10,8 @@
     $scope.apellido = "";
     $scope.dni = "";
     $scope.email = "";
-    $scope.votos = { 'musica': null,   'audiovisuales': null,
-      'visuales': null, 'letras': null, 'escenicas': null };
+    $scope.votos = { musica: null, audiovisuales: null,
+      visuales: null, letras: null, escenicas: null };
     $scope.persona_disponible_de_voto = true;
 
     $scope.cotejar_datos_de_persona = function (nombre, apellido, email, dni) {
@@ -29,7 +29,7 @@
               apellido:$scope.apellido,
               email:$scope.email,
               dni:$scope.dni,
-              votos:$scope.votos
+              votos: JSON.stringify($scope.votos)
             });
           } else {
             //raiseo el error de que ya voto, que no se olvide D:

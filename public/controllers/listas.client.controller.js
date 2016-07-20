@@ -13,7 +13,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = $stateParams.votos;
+    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -40,12 +40,12 @@
       $mdDialog.show( confirm ).then(function() {
         $scope.votos.audiovisuales = obra;
         $state
-          .go('visuales', {
+          .go('votoVisuales', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:$scope.votos
+            votos:JSON.stringify($stateParams.votos)
           });
       }, function() {
         //cancel handler
@@ -59,7 +59,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = $stateParams.votos;
+    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -77,7 +77,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
       .title('Confirmar voto')
-      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+', en la categoria de visuales?')
+      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+', en la categoría de visuales?')
       .ariaLabel('confirm')
       .targetEvent(ev)
       .ok('Sí')
@@ -86,12 +86,12 @@
       $mdDialog.show( confirm ).then(function() {
         $scope.votos.visuales = obra;
         $state
-          .go('musica', {
+          .go('votoMusica', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:$scope.votos
+            votos:JSON.stringify($stateParams.votos)
           });
       }, function() {
         //cancel handler
@@ -105,7 +105,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = $stateParams.votos;
+    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -123,7 +123,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
       .title('Confirmar voto')
-      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+'?')
+      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+', para la categoría música?')
       .ariaLabel('confirm')
       .targetEvent(ev)
       .ok('Sí')
@@ -132,12 +132,12 @@
       $mdDialog.show( confirm ).then(function() {
         $scope.votos.musica = obra;
         $state
-          .go('escenicas', {
+          .go('votoEscenicas', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:$scope.votos
+            votos:JSON.stringify($stateParams.votos)
           });
       }, function() {
         //cancel handler
@@ -151,7 +151,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = $stateParams.votos;
+    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -169,7 +169,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
       .title('Confirmar voto')
-      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+'?')
+      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+', para la categoría escénicas?')
       .ariaLabel('confirm')
       .targetEvent(ev)
       .ok('Sí')
@@ -178,12 +178,12 @@
       $mdDialog.show( confirm ).then(function() {
         $scope.votos.escenicas = obra;
         $state
-          .go('letras', {
+          .go('votoLetras', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:$scope.votos
+            votos:JSON.stringify($stateParams.votos)
           });
       }, function() {
         //cancel handler
@@ -197,7 +197,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = $stateParams.votos;
+    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -215,7 +215,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
       .title('Confirmar voto')
-      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+'?')
+      .textContent('¿Desea votar la obra "'+ obra.titulo + '"" de '+ obra.autor+', para la categoría letras?')
       .ariaLabel('confirm')
       .targetEvent(ev)
       .ok('Sí')
@@ -229,7 +229,7 @@
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:$scope.votos
+            votos:JSON.stringify($stateParams.votos)
           });
       }, function() {
         //cancel handler
