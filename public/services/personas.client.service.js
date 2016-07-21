@@ -13,7 +13,7 @@
       },
 
       enviar_voto: function ( obj ) {
-        return $http.post('http://localhost:3000/api/persona/', obj );
+        return $http.post('http://localhost:3000/api/personas/', obj );
       }
     }
   }

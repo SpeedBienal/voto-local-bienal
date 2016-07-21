@@ -11,6 +11,9 @@
       },
       getEntireList: function () {
         return $http.get('http://localhost:3000/api/obras');
+      },
+      getObra: function ( id ) {
+        return $http.get('http://localhost:3000/api/obras/'+id);
       }
     }
   }

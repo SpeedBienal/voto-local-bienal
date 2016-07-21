@@ -13,7 +13,6 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = JSON.parse($stateParams.votos);
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -38,14 +37,13 @@
       .cancel('No');
 
       $mdDialog.show( confirm ).then(function() {
-        $scope.votos.audiovisuales = obra;
         $state
           .go('votoVisuales', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:JSON.stringify($stateParams.votos)
+            voto_audiovisuales: obra.id
           });
       }, function() {
         //cancel handler
@@ -59,7 +57,7 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = JSON.parse($stateParams.votos);
+    $scope.voto_audiovisuales = $stateParams.voto_audiovisuales;
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -84,14 +82,14 @@
       .cancel('No');
 
       $mdDialog.show( confirm ).then(function() {
-        $scope.votos.visuales = obra;
         $state
           .go('votoMusica', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:JSON.stringify($stateParams.votos)
+            voto_audiovisuales: $scope.voto_audiovisuales,
+            voto_visuales: obra.id
           });
       }, function() {
         //cancel handler
@@ -105,7 +103,8 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = JSON.parse($stateParams.votos);
+    $scope.voto_audiovisuales = $stateParams.voto_audiovisuales;
+    $scope.voto_visuales = $stateParams.voto_visuales;
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -130,14 +129,15 @@
       .cancel('No');
 
       $mdDialog.show( confirm ).then(function() {
-        $scope.votos.musica = obra;
         $state
           .go('votoEscenicas', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:JSON.stringify($stateParams.votos)
+            voto_audiovisuales: $scope.voto_audiovisuales,
+            voto_visuales: $scope.voto_visuales,
+            voto_musica: obra.id
           });
       }, function() {
         //cancel handler
@@ -151,7 +151,9 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = JSON.parse($stateParams.votos);
+    $scope.voto_audiovisuales = $stateParams.voto_audiovisuales;
+    $scope.voto_visuales = $stateParams.voto_visuales;
+    $scope.voto_musica = $stateParams.voto_musica;
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -176,14 +178,16 @@
       .cancel('No');
 
       $mdDialog.show( confirm ).then(function() {
-        $scope.votos.escenicas = obra;
         $state
           .go('votoLetras', {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:JSON.stringify($stateParams.votos)
+            voto_audiovisuales: $scope.voto_audiovisuales,
+            voto_visuales: $scope.voto_visuales,
+            voto_musica: $scope.voto_musica,
+            voto_escenicas: obra.id
           });
       }, function() {
         //cancel handler
@@ -197,7 +201,10 @@
     $scope.apellido = $stateParams.apellido;
     $scope.email = $stateParams.email;
     $scope.dni = $stateParams.dni;
-    $scope.votos = JSON.parse($stateParams.votos);
+    $scope.voto_audiovisuales = $stateParams.voto_audiovisuales;
+    $scope.voto_visuales = $stateParams.voto_visuales;
+    $scope.voto_musica = $stateParams.voto_musica;
+    $scope.voto_escenicas = $stateParams.voto_escenicas;
     $scope.obras = [];
     $scope.filtro = "";
 
@@ -229,7 +236,11 @@
             apellido:$scope.apellido,
             email:$scope.email,
             dni:$scope.dni,
-            votos:JSON.stringify($stateParams.votos)
+            voto_audiovisuales: $scope.voto_audiovisuales,
+            voto_visuales: $scope.voto_visuales,
+            voto_musica: $scope.voto_musica,
+            voto_escenicas: $scope.voto_escenicas,
+            voto_letras: obra.id
           });
       }, function() {
         //cancel handler

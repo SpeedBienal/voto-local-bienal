@@ -11,13 +11,6 @@ exports.list = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
-
-  req.body.voto_letras = req.body.voto.letras._id;
-  req.body.voto_musica = req.body.voto.musica._id;
-  req.body.voto_escenicas = req.body.voto.escenicas._id;
-  req.body.voto_audiovisuales = req.body.voto.audiovisuales._id;
-  req.body.voto_visuales = req.body.voto.visuales._id;
-
   var persona = new Persona( req.body );
   persona.save(function (err) {
     if (err) {
