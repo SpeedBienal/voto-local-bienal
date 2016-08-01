@@ -13,6 +13,12 @@ var ObraSchema = new Schema({
   categoria: {
     type: String,
     required: true,
+    enum: ['audiovisuales','visuales','musica','escenicas','letras'],
+  },
+  clase: {
+    type: String,
+    required: true,
+    enum: ['A','B'],
   },
   created: {
     type: Date,

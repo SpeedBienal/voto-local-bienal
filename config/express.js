@@ -39,6 +39,7 @@ module.exports = function( db ) {
   });*/
 
   //Require a las rutas
+  require( '../app/routes/voto.server.route.js' )( app );
   require( '../app/routes/persona.server.route.js' )( app );
   require( '../app/routes/obras.server.route.js' )( app );
 
