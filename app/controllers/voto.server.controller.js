@@ -32,6 +32,7 @@ exports.list_short = function (req, res, next) {
                       return next(err);
                     } else {
                       var votos = {
+
                         audiovisuales: av_votos,
                         visuales: v_votos,
                         musica: m_votos,
@@ -43,6 +44,26 @@ exports.list_short = function (req, res, next) {
             }});
         }});
     }});
+};
+
+exports.single_top = function (req, res, next, categoria) {
+  Voto.top3ByCategoria( categoria, function (err, top) {
+    if (err) {
+      return next(err);
+    } else {
+      console.log("tengo top");
+      console.log(top);
+      Voto.totalCategoria( categoria, function (err, total) {
+        if (err) {
+          return next(err);
+        } else {
+          console.log("tengo total");
+          console.log(total);
+          res.json({obras: top, 'total': total });
+        }
+      })
+    }
+  });
 };
 
 exports.create = function (req, res, next) {

@@ -4,10 +4,11 @@
     .controller('ObrasController', [ '$scope', 'obrasService', 'localServices', obra_ ] );
 
   class Obra {
-    constructor(_titulo, _autor, _categoria) {
+    constructor(_titulo, _autor, _categoria, _clase) {
       this.titulo = _titulo;
       this.autor = _autor;
       this.categoria = _categoria;
+      this.clase = _clase;
     }
   }
 
@@ -23,6 +24,7 @@
     $scope.titulo = '';
     $scope.autor = '';
     $scope.categoria = '';
+    $scope.clase = '';
 
     localServices.getEntireList().then(function (res) {
       var data = res.data;
@@ -39,13 +41,14 @@
     });
 
     $scope.agregarObra = function () {
-      var obj = new Obra($scope.titulo, $scope.autor, $scope.categoria);
+      var obj = new Obra($scope.titulo, $scope.autor, $scope.categoria, $scope.clase);
       obrasService.crear(obj).then(function (res) {
         console.log('Obra creada <'+$scope.titulo+','+$scope.autor+'>');
 
         $scope.obras[ obj.categoria ].unshift( obj );
         $scope.titulo = '';
         $scope.autor = '';
+        $scope.clase = '';
       },function () {
         console.log('!! NO SE PUDO CREAR LA OBRA !!<'+$scope.titulo+','+$scope.autor+'>');
       });

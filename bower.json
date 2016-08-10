@@ -20,6 +20,8 @@
     "angular-animate": "^1.5.7",
     "angular-aria": "^1.5.7",
     "angular-material": "^1.0.9",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "chartjs": "^2.2.1",
+    "angular-chart.js": "angular-chartjs#^1.0.0"
   }
 }
