@@ -1,3 +1,58 @@
-<canvas id="pie" class="chart chart-pie"
-  chart-data="data" chart-labels="labels" chart-options="options">
-</canvas>
+<div layout="column">
+  <div layout="row" layout-align="space-around">
+    <h4 flex=20>Audiovisuales</h4>
+    <h4 flex=20>Música</h4>
+    <h4 flex=20>Escénicas</h4>
+    <h4 flex=20>Visuales</h4>
+    <h4 flex=20>Letras</h4>
+  </div>
+  <div layout="row" layout-align="space-around">
+    <canvas id="av-chart" flex=20 class="chart chart-pie"
+      chart-data="audiovisuales.data" chart-labels="audiovisuales.labels" chart-colors="audiovisuales.colors">
+    </canvas>
+    <canvas id="m-chart" flex=20 class="chart chart-pie"
+      chart-data="musica.data" chart-labels="musica.labels" chart-colors="musica.colors">
+    </canvas>
+    <canvas id="e-chart" flex=20 class="chart chart-pie"
+      chart-data="escenicas.data" chart-labels="escenicas.labels" chart-colors="escenicas.colors">
+    </canvas>
+    <canvas id="v-chart" flex=20 class="chart chart-pie"
+      chart-data="visuales.data" chart-labels="visuales.labels" chart-colors="visuales.colors">
+    </canvas>
+    <canvas id="l-chart" flex=20 class="chart chart-pie"
+      chart-data="letras.data" chart-labels="letras.labels" chart-colors="letras.colors">
+    </canvas>
+  </div>
+  <div layout="row" layout-align="space-around">
+    <div>
+      <p><strong>Total de votos:</strong>{{ audiovisuales.data[0]+audiovisuales.data[1]+audiovisuales.data[2]+audiovisuales.data[3] }}</p>
+      <p>{{audiovisuales.labels[0]}} {{audiovisuales.data[0]}}</p>
+      <p>{{audiovisuales.labels[1]}} {{audiovisuales.data[1]}}</p>
+      <p>{{audiovisuales.labels[2]}} {{audiovisuales.data[2]}}</p>
+    </div>
+    <div>
+      <p><strong>Total de votos:</strong>{{ musica.data[0]+musica.data[1]+musica.data[2]+musica.data[3] }}</p>
+      <p>{{musica.labels[0]}} {{musica.data[0]}}</p>
+      <p>{{musica.labels[1]}} {{musica.data[1]}}</p>
+      <p>{{musica.labels[2]}} {{musica.data[2]}}</p>
+    </div>
+    <div>
+      <p><strong>Total de votos:</strong>{{ escenicas.data[0]+escenicas.data[1]+escenicas.data[2]+escenicas.data[3] }}</p>
+      <p>{{escenicas.labels[0]}} {{escenicas.data[0]}}</p>
+      <p>{{escenicas.labels[1]}} {{escenicas.data[1]}}</p>
+      <p>{{escenicas.labels[2]}} {{escenicas.data[2]}}</p>
+    </div>
+    <div>
+      <p><strong>Total de votos:</strong>{{ visuales.data[0]+visuales.data[1]+visuales.data[2]+visuales.data[3] }}</p>
+      <p>{{visuales.labels[0]}} {{visuales.data[0]}}</p>
+      <p>{{visuales.labels[1]}} {{visuales.data[1]}}</p>
+      <p>{{visuales.labels[2]}} {{visuales.data[2]}}</p>
+    </div>
+    <div>
+      <p><strong>Total de votos:</strong>{{ letras.data[0]+letras.data[1]+letras.data[2]+letras.data[3] }}</p>
+      <p>{{letras.labels[0]}} {{letras.data[0]}}</p>
+      <p>{{letras.labels[1]}} {{letras.data[1]}}</p>
+      <p>{{letras.labels[2]}} {{letras.data[2]}}</p>
+    </div>
+  </div>
+</div>

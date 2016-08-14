@@ -16,6 +16,7 @@ exports.create = function (req, res, next) {
     if (err) {
       return next(err);
     } else {
+      //socket emit
       res.json(persona);
     }
   });

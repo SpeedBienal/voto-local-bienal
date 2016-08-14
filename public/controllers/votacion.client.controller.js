@@ -3,55 +3,98 @@ angular
   .controller("BarCtrl", ['$scope', 'socket', 'votacionService', BarCtrl_]);
 
 function BarCtrl_ ($scope, socket, votacionService) {
-  $scope.labels = ['Audiovisuales', 'Visuales', 'Música', 'Escénicas', 'Letras'];
-  //$scope.series = ['Serie A', 'Series B'];
+  $scope.visuales ={
+    'data':[getRand(),getRand(),getRand(),getRand()],
+    'labels': ['Guernica', 'Der Kuz', 'La Geoconda', 'otros'],
+    'colors': ['#395E80',Lighten('#395E80',30),Lighten('#395E80',60),Lighten('#395E80',90)]
+  };
+  $scope.audiovisuales = {
+    'data': [getRand(),getRand(),getRand(),getRand()],
+    'labels': ["prueba","prueba","prueba","otros"],
+    'colors': ['#ed7635',Lighten('#ed7635',30),Lighten('#ed7635',60),Lighten('#ed7635',90)]
+  };
+  $scope.musica = {
+    'data': [getRand(),getRand(),getRand(),getRand()],
+    'labels': ["prueba","prueba","prueba","otros"],
+    'colors': ['#f8b451',Lighten('#f8b451',30),Lighten('#f8b451',60), Lighten('#f8b451',90)]
+  };
+  $scope.escenicas = {
+    'data': [getRand(),getRand(),getRand(),getRand()],
+    'labels': ["prueba","prueba","prueba","otros"],
+    'colors': ['#ea5a57',Lighten('#ea5a57',30),Lighten('#ea5a57',60), Lighten('#ea5a57',90)]
+  };
+  $scope.letras = {
+    'data': [getRand(),getRand(),getRand(),getRand()],
+    'labels': ["prueba","prueba","prueba","otros"],
+    'colors': ['#00a880',Lighten('#00a880',30),Lighten('#00a880',60), Lighten('#00a880',90)]
+  };
 
-  $scope.values = [[],[],[]];
-
-  votacionService.getInitial().then(function (res) {
-    $scope.values[0].push( parseInt(res.data.audiovisuales[0].total) );
-    $scope.values[1].push( parseInt(res.data.audiovisuales[1].total) );
-    $scope.values[2].push( parseInt(res.data.audiovisuales[2].total) );
-    $scope.values[0].push( parseInt(res.data.visuales[0].total) );
-    $scope.values[1].push( parseInt(res.data.visuales[1].total) );
-    $scope.values[2].push( parseInt(res.data.visuales[2].total) );
-    $scope.values[0].push( parseInt(res.data.musica[0].total) );
-    $scope.values[1].push( parseInt(res.data.musica[1].total) );
-    $scope.values[2].push( parseInt(res.data.musica[2].total) );
-    $scope.values[0].push( parseInt(res.data.escenicas[0].total) );
-    $scope.values[1].push( parseInt(res.data.escenicas[1].total) );
-    $scope.values[2].push( parseInt(res.data.escenicas[2].total) );
-    $scope.values[0].push( parseInt(res.data.letras[0].total) );
-    $scope.values[1].push( parseInt(res.data.letras[1].total) );
-    $scope.values[2].push( parseInt(res.data.letras[2].total) );
-  }, function (res) {
-    for (var i = 0; i < $scope.values.length; i++) {
-      for (var j = 0; j < 5; j++) {
-        $scope.values[i].push(0);
-      }
-    }
-  });
 
   socket.on('voto', function (data) {
-    $scope.values[0][0] = parseInt(data.audiovisuales[0].total);
-    $scope.values[1][0] = parseInt(data.audiovisuales[1].total);
-    $scope.values[2][0] = parseInt(data.audiovisuales[2].total);
-    $scope.values[0][1] = parseInt(data.visuales[0].total);
-    $scope.values[1][1] = parseInt(data.visuales[1].total);
-    $scope.values[2][1] = parseInt(data.visuales[2].total);
-    $scope.values[0][2] = parseInt(data.musica[0].total);
-    $scope.values[1][2] = parseInt(data.musica[1].total);
-    $scope.values[2][2] = parseInt(data.musica[2].total);
-    $scope.values[0][3] = parseInt(data.escenicas[0].total);
-    $scope.values[1][3] = parseInt(data.escenicas[1].total);
-    $scope.values[2][3] = parseInt(data.escenicas[2].total);
-    $scope.values[0][4] = parseInt(data.letras[0].total);
-    $scope.values[1][4] = parseInt(data.letras[1].total);
-    $scope.values[2][4] = parseInt(data.letras[2].total);
+    var total = data.total;
+    var av = data.audiovisuales;
+    var v = data.visuales;
+    var m = data.musica;
+    var e = data.escenicas;
+    var l = data.letras;
 
+    for (var i = 0; i < av.length; i++) {
+      $scope.audiovisuales.data[i] = av[i].suma;
+      $scope.audiovisuales.labels[i] = av[i]._id.
+    }
+    $scope.audiovisuales.data[3] = total - (av[0].suma + av[1].suma + av[2].suma);
+
+    for (var i = 0; i < v.length; i++) {
+      $scope.visuales.data[i] = v[i].suma;
+      $scope.visuales.labels[i] = v[i]._id.
+    }
+    $scope.visuales.data[3] = total - (v[0].suma + v[1].suma + v[2].suma);
+
+    for (var i = 0; i < m.length; i++) {
+      $scope.musica.data[i] = m[i].suma;
+      $scope.musica.labels[i] = m[i]._id.
+    }
+    $scope.musica.data[3] = total - (m[0].suma + m[1].suma + m[2].suma);
+
+    for (var i = 0; i < e.length; i++) {
+      $scope.escenicas.data[i] = e[i].suma;
+      $scope.escenicas.labels[i] = e[i]._id.
+    }
+    $scope.escenicas.data[3] = total - (e[0].suma + e[1].suma + e[2].suma);
+
+    for (var i = 0; i < l.length; i++) {
+      $scope.letras.data[i] = l[i].suma;
+      $scope.letras.labels[i] = l[i]._id.
+    }
+    $scope.letras.data[3] = total - (l[0].suma + l[1].suma + l[2].suma);
+
+    console.log(data);
   });
 
   $scope.$on('$destroy', function() {
       socket.removeListener('voto');
   });
+}
+
+function Lighten(col, amt) {
+    var usePound = false;
+    if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+    }
+    var num = parseInt(col,16);
+    var r = (num >> 16) + amt;
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+    var b = ((num >> 8) & 0x00FF) + amt;
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+    var g = (num & 0x0000FF) + amt;
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
+
+function getRand() {
+  return Math.floor((Math.random()*100)+1);
 }
