@@ -31,44 +31,48 @@ function BarCtrl_ ($scope, socket, votacionService) {
 
 
   socket.on('voto', function (data) {
-    var total = data.total;
-    var av = data.audiovisuales;
-    var v = data.visuales;
-    var m = data.musica;
-    var e = data.escenicas;
-    var l = data.letras;
+    votacionService.getInitial().then(function (res) {
 
-    for (var i = 0; i < av.length; i++) {
-      $scope.audiovisuales.data[i] = av[i].suma;
-      $scope.audiovisuales.labels[i] = av[i]._id.
-    }
-    $scope.audiovisuales.data[3] = total - (av[0].suma + av[1].suma + av[2].suma);
+      var total = res.data.total;
+      var av = res.data.audiovisuales;
+      var v = res.data.visuales;
+      var m = res.data.musica;
+      var e = res.data.escenicas;
+      var l = res.data.letras;
 
-    for (var i = 0; i < v.length; i++) {
-      $scope.visuales.data[i] = v[i].suma;
-      $scope.visuales.labels[i] = v[i]._id.
-    }
-    $scope.visuales.data[3] = total - (v[0].suma + v[1].suma + v[2].suma);
+      for (var i = 0; i < av.length; i++) {
+        $scope.audiovisuales.data[i] = av[i].suma;
+        $scope.audiovisuales.labels[i] = av[i]._id.titulo;
+      }
+      $scope.audiovisuales.data[3] = total - (av[0].suma + av[1].suma + av[2].suma);
 
-    for (var i = 0; i < m.length; i++) {
-      $scope.musica.data[i] = m[i].suma;
-      $scope.musica.labels[i] = m[i]._id.
-    }
-    $scope.musica.data[3] = total - (m[0].suma + m[1].suma + m[2].suma);
+      for (var i = 0; i < v.length; i++) {
+        $scope.visuales.data[i] = v[i].suma;
+        $scope.visuales.labels[i] = v[i]._id.titulo;
+      }
+      $scope.visuales.data[3] = total - (v[0].suma + v[1].suma + v[2].suma);
 
-    for (var i = 0; i < e.length; i++) {
-      $scope.escenicas.data[i] = e[i].suma;
-      $scope.escenicas.labels[i] = e[i]._id.
-    }
-    $scope.escenicas.data[3] = total - (e[0].suma + e[1].suma + e[2].suma);
+      for (var i = 0; i < m.length; i++) {
+        $scope.musica.data[i] = m[i].suma;
+        $scope.musica.labels[i] = m[i]._id.titulo;
+      }
+      $scope.musica.data[3] = total - (m[0].suma + m[1].suma + m[2].suma);
 
-    for (var i = 0; i < l.length; i++) {
-      $scope.letras.data[i] = l[i].suma;
-      $scope.letras.labels[i] = l[i]._id.
-    }
-    $scope.letras.data[3] = total - (l[0].suma + l[1].suma + l[2].suma);
+      for (var i = 0; i < e.length; i++) {
+        $scope.escenicas.data[i] = e[i].suma;
+        $scope.escenicas.labels[i] = e[i]._id.titulo;
+      }
+      $scope.escenicas.data[3] = total - (e[0].suma + e[1].suma + e[2].suma);
 
-    console.log(data);
+      for (var i = 0; i < l.length; i++) {
+        $scope.letras.data[i] = l[i].suma;
+        $scope.letras.labels[i] = l[i]._id.titulo;
+      }
+      $scope.letras.data[3] = total - (l[0].suma + l[1].suma + l[2].suma);
+      console.log(res.data);
+    });
+
+
   });
 
   $scope.$on('$destroy', function() {

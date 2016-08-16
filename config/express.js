@@ -15,6 +15,9 @@ module.exports = function( db ) {
   var server = http.createServer( app );
   var io = socketio.listen( server );
 
+  // TODO: cambiar este global
+  global.io = io;
+
   if ( process.env.NODE_ENV === 'development' ) {
     app.use( morgan( 'dev' ) );
   } else if ( process.env.NODE_ENV === 'production' ) {
@@ -31,7 +34,7 @@ module.exports = function( db ) {
   app.set( 'view engine', 'jade' );
 
   //Require a las rutas
-  require( '../app/routes/voto.server.route.js' )( app, server, io );
+  require( '../app/routes/voto.server.route.js' )( app );//, server, io );
   require( '../app/routes/persona.server.route.js' )( app );
   require( '../app/routes/obras.server.route.js' )( app );
 

@@ -74,11 +74,9 @@ PersonaSchema.pre('save', function (next) {
   Voto.create( array, function (err, arr) {
     if (err) {
       return next(err);
-    } else {
-      console.log("cree los votos con pre en persona");
+      console.log(arr);
     }
   });
-  console.log("se termino de cargar persona, voy a pasar a next");
   next();
 });
 

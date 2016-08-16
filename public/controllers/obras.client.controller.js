@@ -28,6 +28,7 @@
 
     localServices.getEntireList().then(function (res) {
       var data = res.data;
+      console.log(data);
       for (var variable in data) {
         if (res.data.hasOwnProperty(variable)) {
           var obj = data[variable];

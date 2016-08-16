@@ -10,6 +10,12 @@ exports.list = function (req, res, next) {
   });
 };
 
+/*exports.super_top = function (req, res) {
+  Voto.super_top(function (err, votos) {
+    console.log(votos);
+  });
+};*/
+
 exports.list_short = function (req, res, next) {
   Voto.top3ByCategoria('audiovisuales', function (err, av_votos) {
     if (err) {
@@ -31,14 +37,20 @@ exports.list_short = function (req, res, next) {
                     if (err) {
                       return next(err);
                     } else {
-                      var votos = {
+                      Voto.totalCategoria('letras',function (err, tot) {
+                        if (err) {
+                          return next(err);
+                        } else {
+                          var votos = {
 
-                        audiovisuales: av_votos,
-                        visuales: v_votos,
-                        musica: m_votos,
-                        escenicas: e_votos,
-                        letras: l_votos};
-                      res.json(votos);
+                            audiovisuales: av_votos,
+                            visuales: v_votos,
+                            musica: m_votos,
+                            escenicas: e_votos,
+                            letras: l_votos,
+                            total: tot};
+                          res.json(votos);
+                        }});
                     }});
                 }});
             }});

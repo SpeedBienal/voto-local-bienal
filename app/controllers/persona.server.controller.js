@@ -16,7 +16,12 @@ exports.create = function (req, res, next) {
     if (err) {
       return next(err);
     } else {
-      //socket emit
+      var io = global.io;
+      io.emit('voto',{
+        type: 'status',
+        text: 'connected',
+        created: Date.now(),
+      });
       res.json(persona);
     }
   });

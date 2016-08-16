@@ -1,5 +1,6 @@
 var voto = require('../controllers/voto.server.controller');
 var obra = require('../controllers/obra.server.controller');
+var Voto = require('mongoose').model('Voto');
 
 
 module.exports = function ( io, socket ) {
@@ -11,8 +12,8 @@ module.exports = function ( io, socket ) {
     text: 'connected',
     created: Date.now(),
   });
-  console.log(voto.top());
-  socket.on( 'voto', function ( data ) {
+  //console.log(voto.top());
+  /*socket.on( 'voto', function ( data ) {
     data = voto.list_short;
     for (var cat in data) {
       if (data.hasOwnProperty(cat)) {
@@ -23,7 +24,7 @@ module.exports = function ( io, socket ) {
       }
     }
     io.emit( 'voto', data );
-  });
+  });*/
 
   socket.on( 'disconnect', function () {
     io.emit( 'disconnect', {

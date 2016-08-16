@@ -43,9 +43,21 @@ VotoSchema.statics.totalCategoria = function (categoria, callback) {
   this.count({"categoria": categoria}, callback);
 };
 
-VotoSchema.statics.top = function (callback) {
-  VotoSchema.statics.top3ByCategoria('audiovisuales',)
-}
+/*VotoSchema.statics.super_top = function (callback) {
+  _top_3('audiovisuales', function (err, av) {
+    _top_3('visuales',function (err, v) {
+      _top_3('musica',function (err, m) {
+        _top_3('escenicas',function (err, e) {
+          _top_3('letras', function (err, l) {
+            data = av.concat(v,m,e,l);
+            callback(null,data);
+
+          })
+        })
+      })
+    })
+  });
+}; */
 
 VotoSchema.set( 'toJSON', { getters: true } );
 
